@@ -1,0 +1,27 @@
+@import "../../breakpoints.scss";
+.color-level-box {
+  height: 20px;
+  width: 25px;
+}
+.heat-level-container {
+  position: relative;
+  background: white;
+  padding: 9px;
+  border: 1px solid;
+  border-left: none;
+  border-top: none;
+  border-bottom: none;
+
+  ul {
+    list-style-type: none;
+    li {
+      display: flex;
+      gap: 10px;
+      margin-top: 5px;
+    }
+  }
+
+  @include media("<=phone") {
+    display: none;
+  }
+}

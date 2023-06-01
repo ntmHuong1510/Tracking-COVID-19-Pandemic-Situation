@@ -1,0 +1,14 @@
+@import "../../breakpoints.scss";
+.map-container {
+  svg {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  width: 100%;
+  border: 1px solid;
+
+  @include media("<=phone") {
+    width: 100%;
+  }
+  display: flex;
+}
