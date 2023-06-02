@@ -35,16 +35,18 @@ const BarChartTest: React.FC<Props> = ({ dataset, country, onReset }) => {
       updateData(country);
       onReset("");
     }
-    console.log(country);
     d3.select("#bar_chart").select("svg").remove();
     drawBarChart();
   }, [data, isCase, isDeath, isAscending, isDescending, country]);
 
   const updateData = (value: any) => {
     const addedItem = dataset.find((element: any) => element.country === value);
-    console.log(addedItem);
-    //@ts-ignore
-    setData((prevState) => [...prevState, addedItem]);
+    const deletedItem = data.some((element: any) => element.country === value);
+    console.log(deletedItem);
+    if (!deletedItem) {
+      //@ts-ignore
+      setData((prevState) => [...prevState, addedItem]);
+    }
   };
 
   const handleRemoveCountry = (country: any) => {
@@ -226,11 +228,29 @@ const BarChartTest: React.FC<Props> = ({ dataset, country, onReset }) => {
           <Select
             id="select-country"
             // value={age}
-            label="Age"
-            onChange={(e) => updateData(e.target.value)}
+            label="Country"
+            onChange={(e) => {
+              // setSelectedCountry(e.target.value);
+              data.find((value) => {
+                value === e.target.value;
+                return 0;
+              });
+              updateData(e.target.value);
+            }}
           >
             {dataset.map((element: any) => (
-              <MenuItem value={element.country}>{element.country}</MenuItem>
+              <MenuItem
+                value={element.country}
+                style={{
+                  backgroundColor: data.find(
+                    (item: any) => item.country === element.country
+                  )
+                    ? "lightgray"
+                    : "white",
+                }}
+              >
+                {element.country}
+              </MenuItem>
             ))}
           </Select>
         </FormControl>
