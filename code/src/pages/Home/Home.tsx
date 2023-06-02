@@ -32,14 +32,11 @@ const Home = () => {
   }, []);
   return (
     <Container>
-      {/* <Grid container spacing={2}>
-        <Grid item xs={6} md={8} width={"1000px"}> */}
       <Typography variant="h1" align="center">
         World Covid Map
       </Typography>
       <Typography minWidth={1000}>
         {covidCases.length > 0 && <WorldMap data={covidCases} />}
-        {/* </Grid> */}
       </Typography>
       <Typography>
         <Typography align="center" variant="h5">
@@ -50,15 +47,8 @@ const Home = () => {
             <LineChartCountries width={1000} height={500} />
           </Typography>
         </Box>
-        {/* <LineChartCountries width={800} height={500} /> */}
       </Typography>
-      <Typography>
-        {/* <section className="linechart_container"> */}
-        {/* {covidCases.length > 0 && <BarChartTest dataset={covidCases} />} */}
-        {/* </section> */}
-      </Typography>
-      {/* <BarChart width={800} height={500} /> */}
-      {/* </Grid> */}
+      <Typography></Typography>
     </Container>
   );
 };
